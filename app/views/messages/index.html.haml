@@ -11,7 +11,8 @@
         .content_user_name びび
         .content_date 2020/7/7
   .form
-    %form
+    = form_with url: '#', local: true do |f|
       .form__box
-      
-.Footer
+        = f.text_area :content, class: 'content_form', placeholder: '文字を入力（25文字以内）'
+        = f.submit '投稿する', class: 'form_btn'
+.Footer Homework App 2019

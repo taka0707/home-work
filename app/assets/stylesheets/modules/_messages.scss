@@ -66,10 +66,26 @@
     filter: drop-shadow(3px 3px 3px rgba(100,100,100,0.6));
     margin: 30px auto;
     padding: 10px;
+    &__box {
+      margin: 0 auto;
+      width: 80%;
+      .content_form {
+        width: 100%;
+        height: 80px;
+        resize: none;
+      }
+      .form_btn {
+        display: block;
+        margin: 10px auto 0;
+      }
+    }
   }
 }
 
 .Footer {
   height: 50px;
-  background-color: lawngreen;
+  background-color: #F0E8E4;
+  text-align: center;
+  color: #473838;
+  padding-top: 5px;
 }
