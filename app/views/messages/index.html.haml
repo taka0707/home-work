@@ -1,8 +1,13 @@
 .Header
   .Header__left Homework App
   .Header__right
-    .user_name taka
-    = link_to 'ログアウト', '#', class: "logout"
+    - if user_signed_in?
+      .user_name 
+        = current_user.nickname
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log out"
+    - else
+      = link_to '新規登録', new_user_registration_path, class: "sign-up"
+      = link_to 'ログイン', new_user_session_path, class: "log in"
 .Main
   .Main__contents
     .content
@@ -10,9 +15,10 @@
       .content_info
         .content_user_name びび
         .content_date 2020/7/7
-  .form
-    = form_with url: '#', local: true do |f|
-      .form__box
-        = f.text_area :content, class: 'content_form', placeholder: '文字を入力（25文字以内）'
-        = f.submit '投稿する', class: 'form_btn'
-.Footer Homework App 2019
+  - if user_signed_in?
+    .form
+      = form_with url: '#', local: true do |f|
+        .form__box
+          = f.text_area :content, class: 'content_form', placeholder: '文字を入力（25文字以内）'
+          = f.submit '投稿する', class: 'form_btn'
+  .Footer Homework App 2019
