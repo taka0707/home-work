@@ -10,14 +10,18 @@
       = link_to 'ログイン', new_user_session_path, class: "log in"
 .Main
   .Main__contents
-    .content
-      .message おはよう
-      .content_info
-        .content_user_name びび
-        .content_date 2020/7/7
+    - @messages.each do |message|
+      .content
+        .message
+          = message.content
+        .content_info
+          .content_user_name
+            = message.user.nickname
+          .content_date
+            = message.created_at.to_s(:datetime)
   - if user_signed_in?
     .form
-      = form_with url: '#', local: true do |f|
+      = form_with(url: messages_path, local: true, method: :post) do |f|
         .form__box
           = f.text_area :content, class: 'content_form', placeholder: '文字を入力（25文字以内）'
           = f.submit '投稿する', class: 'form_btn'
