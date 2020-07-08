@@ -1,6 +1,15 @@
 * {
   box-sizing: border-box;
 }
+html {
+  height: 100%;
+}
+body {
+  background-color: #F0E8E4;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
 
 .Header {
   height: 65px;
@@ -22,9 +31,14 @@
       margin-right: 30px;
       color: #473838;
     }
-    .logout {
+    .log {
       text-decoration: none;
       color: #473838;
+    }
+    .sign-up {
+      text-decoration: none;
+      color: #473838;
+      margin-right: 30px;
     }
   }
 }
@@ -76,7 +90,8 @@
       }
       .form_btn {
         display: block;
-        margin: 10px auto 0;
+        margin: 5px auto 0;
+        padding: 0 5px;
       }
     }
   }
