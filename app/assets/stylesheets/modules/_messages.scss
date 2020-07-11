@@ -11,6 +11,47 @@ body {
   margin: 0;
 }
 
+.Modal {
+  display: none;
+  height: 300px;
+  width: 400px;
+  background-color: white;
+  position: fixed;
+  top:250px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  background: linear-gradient(45deg, #000, transparent);
+}
+
+.Modal__content {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  width: 50%;
+  p {
+    color: white;
+    margin: 40px 0;
+  }
+  .btn {
+    font-size: 100%;
+  }
+  .close {
+    margin: 15px;
+  }
+}
+
+.Modal__bg {
+  display: none;
+  background-color: #473838;
+  opacity: 0.3;
+}
+
 .Header {
   height: 65px;
   width: 100vw;

@@ -1,3 +1,9 @@
+.Modal
+  .Modal__content
+    %p 本当に送信しますか？
+    %button{type: "submit", class:'send btn'} 送信する
+    %button{type: "submit", class:'close btn'} 閉じる
+
 .Header
   .Header__left Homework App
   .Header__right
@@ -21,7 +27,7 @@
             = message.created_at.to_s(:datetime)
   - if user_signed_in?
     .form
-      = form_with(url: messages_path, local: true, method: :post) do |f|
+      = form_with(url: messages_path, local: true, method: :post, html: {class: "form__content"}) do |f|
         .form__box
           = f.text_area :content, class: 'content_form', placeholder: '文字を入力（25文字以内）'
           = f.submit '投稿する', class: 'form_btn'
