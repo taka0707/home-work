@@ -16,30 +16,51 @@ $(function(){
     return html;
   }
 
-  $('.form__box').on('submit', function(e){
+
+  $('.form__content').on('submit', function(e){
     e.preventDefault()
     let formData = new FormData(this);
     let url = $(this).attr('action');
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+    $('.Modal').fadeIn('slow');
+    $('.Modal__content').on('click', '.send', function(e) {
+      e.preventDefault()
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(data){
+        let html = buildHTML(data);
+          $('.Modal').fadeOut();
+          $('.Main__contents').prepend(html);
+          $('form')[0].reset();
+          $('.Main__contents').animate({ scrollTop: $('.Main__contents')[0].scrollHeight});
+          $('.form_btn').prop('disabled', false);
+          });
+      })
+      .fail(function() {
+        alert("メッセージ送信に失敗しました");
+        $('.form_btn').prop('disabled', false);
+      })
     })
-    .done(function(data){
-      let html = buildHTML(data);
-      $('.Main__contents').prepend(html);
-      $('form')[0].reset();
-      $('.Main__contents').animate({ scrollTop: $('.Main__contents')[0].scrollHeight});
-      $('.form_btn').prop('disabled', false);
-    })
-    .fail(function() {
-      alert("メッセージ送信に失敗しました");
-      $('.form_btn').prop('disabled', false);
-    });  
+    
+  
+  
+  $('.Modal__content').on('click', '.close', function(e) {
+    e.preventDefault()
+    $('.Modal').fadeOut();
+    $('.form_btn').prop('disabled', false);
   });
 
-  
+  $('.content').hover(function() {
+    $(this).animate({ color: 'rgb(255,255,255)'}, 20);
+    $(this).animate({ backgroundColor: 'rgb(151,209,228)'}, 20);
+  }, function() {
+    $(this).animate({ color: 'rgb(0,0,0)'}, 20);
+    $(this).animate({ backgroundColor: 'rgb(255,255,255)'}, 20);
+  })
+
 });
