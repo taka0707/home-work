@@ -55,17 +55,12 @@ $(function(){
     $('.form_btn').prop('disabled', false);
   });
 
-    
-
-  $('.content').mouseover(function() {
-    $(this).animate({ color: 'rgb(255,255,255)'}, { duration: 'fast'});
-    $(this).animate({ backgroundColor: 'rgb(151,209,228)'}, { duration: 'fast'});
-    
+  $('.content').hover(function() {
+    $(this).animate({ color: 'rgb(255,255,255)'}, 20);
+    $(this).animate({ backgroundColor: 'rgb(151,209,228)'}, 20);
+  }, function() {
+    $(this).animate({ color: 'rgb(0,0,0)'}, 20);
+    $(this).animate({ backgroundColor: 'rgb(255,255,255)'}, 20);
   })
 
-  $('.content').mouseleave(function() {
-    $(this).animate({ color: 'rgb(0,0,0)'}, { duration: 'fast'});
-    $(this).animate({ backgroundColor: 'rgb(255,255,255)'}, { duration: 'fast'});
-    
-  })
 });
